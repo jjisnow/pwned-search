@@ -38,12 +38,12 @@ def main(args):
             sha1pwd, count = lookup_pwned_api(pwd)
 
             if count:
-                print("{0} was found with {1} occurrences (hash: {2})".format(pwd, count, sha1pwd))
+                print(f"{pwd} was found with {count} occurrences (hash: {sha1pwd})")
                 ec = 1
             else:
                 print(pwd, "was not found")
         except:
-            print(pwd, "could not be checked: ", sys.exc_info()[1])
+            print(f"{pwd} could not be checked: {sys.exc_info()[1]}")
             ec = 1
             continue
     return ec
