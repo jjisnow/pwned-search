@@ -25,8 +25,8 @@ def lookup_pwned_api(pwd):
     if res.status_code != 200:
         raise RuntimeError('Error fetching "{}": {}'.format(
             url, res.status_code))
-    hashes = (line.split(':') for line in res.text.splitlines())
-    count = next((int(count) for t, count in hashes if t == tail), 0)
+    hash_tail_counts = (line.split(':') for line in res.text.splitlines())
+    count = next((int(count) for t, count in hash_tail_counts if t == tail), 0)
     return sha1pwd, count
 
 
